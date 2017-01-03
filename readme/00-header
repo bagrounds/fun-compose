@@ -1,0 +1,4 @@
+# [fun-compose](https://bagrounds.gitlab.io/fun-compose)
+
+Compose(f, g)(x) -> g(f(x))
+
