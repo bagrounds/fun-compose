@@ -14,6 +14,8 @@
 
   /**
    *
+   * @function module:fun-compose.compose
+   *
    * @return {Function} the composition of the input functions
    */
   function compose () {
