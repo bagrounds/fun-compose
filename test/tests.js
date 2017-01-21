@@ -9,25 +9,22 @@
   /* exports */
   module.exports = [
     {
-      error: funAssert.truthy,
-      sync: true
+      error: funAssert.truthy
     },
     {
-      input: {
+      input: [{
         a: sum,
         b: square
-      },
+      }],
       result: funAssert.type('Function'),
-      sync: true,
       transformer: funTransform.argsToObject(['a', 'b'])
     },
     {
-      input: {
+      input: [{
         a: 3,
         b: 4
-      },
+      }],
       result: funAssert.equal(49),
-      sync: true,
       transformer: function sumThenSquare (funCompose) {
         return funTransform.argsToObject(['a', 'b'])(
           funCompose(sum, square)
@@ -35,12 +32,11 @@
       }
     },
     {
-      input: {
+      input: [{
         a: 3,
         b: 4
-      },
+      }],
       result: funAssert.equal(50),
-      sync: true,
       transformer: function sumThenSquarePlusOne (funCompose) {
         return funTransform.argsToObject(['a', 'b'])(
           funCompose(sum, square, plusOne)
