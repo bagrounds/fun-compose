@@ -12,10 +12,10 @@
       error: funAssert.truthy
     },
     {
-      input: [
-        sum,
-        square
-      ],
+      input: [[
+        square,
+        sum
+      ]],
       result: funAssert.type('Function')
     },
     {
@@ -24,7 +24,7 @@
         4
       ],
       result: funAssert.equal(49),
-      transformer: funTransform.toResult(sum, square)
+      transformer: funTransform.toResult([square, sum])
     },
     {
       input: [
@@ -32,7 +32,7 @@
         4
       ],
       result: funAssert.equal(50),
-      transformer: funTransform.toResult(sum, square, plusOne)
+      transformer: funTransform.toResult([plusOne, square, sum])
     }
   ].map(funTest)
 

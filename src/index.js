@@ -6,29 +6,27 @@
   'use strict'
 
   /* imports */
-  var inputSpec = require('./spec-input')
-  var outputSpec = require('./spec-output')
+  var funAssert = require('fun-assert')
+
+  var inputSpec = funAssert.type('[Function]')
+  var outputSpec = funAssert.type('Function')
 
   /* exports */
-  module.exports = compose
+  module.exports = compose([outputSpec, compose, inputSpec])
 
   /**
    *
    * @function module:fun-compose.compose
    *
+   * @param {Array<Function>} functions to compose
    * @return {Function} the composition of the input functions
    */
-  function compose () {
-    inputSpec.apply(null, arguments)
-
-    var composed = Array.prototype.slice.call(arguments)
-      .reduce(function (f1, f2) {
-        return function () {
-          return f2(f1.apply(null, arguments))
-        }
-      })
-
-    return outputSpec(composed)
+  function compose (functions) {
+    return functions.reduceRight(function (f1, f2) {
+      return function () {
+        return f2(f1.apply(null, arguments))
+      }
+    })
   }
 })()
 
