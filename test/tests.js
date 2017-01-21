@@ -12,36 +12,27 @@
       error: funAssert.truthy
     },
     {
-      input: [{
-        a: sum,
-        b: square
-      }],
-      result: funAssert.type('Function'),
-      transformer: funTransform.argsToObject(['a', 'b'])
+      input: [
+        sum,
+        square
+      ],
+      result: funAssert.type('Function')
     },
     {
-      input: [{
-        a: 3,
-        b: 4
-      }],
+      input: [
+        3,
+        4
+      ],
       result: funAssert.equal(49),
-      transformer: function sumThenSquare (funCompose) {
-        return funTransform.argsToObject(['a', 'b'])(
-          funCompose(sum, square)
-        )
-      }
+      transformer: funTransform.toResult(sum, square)
     },
     {
-      input: [{
-        a: 3,
-        b: 4
-      }],
+      input: [
+        3,
+        4
+      ],
       result: funAssert.equal(50),
-      transformer: function sumThenSquarePlusOne (funCompose) {
-        return funTransform.argsToObject(['a', 'b'])(
-          funCompose(sum, square, plusOne)
-        )
-      }
+      transformer: funTransform.toResult(sum, square, plusOne)
     }
   ].map(funTest)
 
