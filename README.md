@@ -1,6 +1,6 @@
 # [fun-compose](https://bagrounds.gitlab.io/fun-compose)
 
-Compose(f, g)(x) -> g(f(x))
+compose([h, g, f])(x) -> (h o g o f)(x)
 
 [![build-status](https://gitlab.com/bagrounds/fun-compose/badges/master/build.svg)](https://gitlab.com/bagrounds/fun-compose/commits/master)
 [![coverage-report](https://gitlab.com/bagrounds/fun-compose/badges/master/coverage.svg)](https://gitlab.com/bagrounds/fun-compose/commits/master)

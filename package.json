@@ -1,7 +1,7 @@
 {
   "name": "fun-compose",
   "version": "0.2.1",
-  "description": "Compose(f, g)(x) -> g(f(x))",
+  "description": "compose([h, g, f])(x) -> (h o g o f)(x)",
   "main": "src/index.js",
   "scripts": {
     "pretest": "npm run lint",
