@@ -6,27 +6,28 @@
   'use strict'
 
   /* imports */
-  var funAssert = require('fun-assert')
+  var funPredicate = require('fun-predicate')
 
-  var inputSpec = funAssert.type('[Function]')
-  var outputSpec = funAssert.type('Function')
+  var isFunction = funPredicate.type('Function')
 
   /* exports */
-  module.exports = compose([outputSpec, compose, inputSpec])
+  module.exports = compose
 
   /**
    *
    * @function module:fun-compose.compose
    *
-   * @param {Array<Function>} functions to compose
-   * @return {Function} the composition of the input functions
+   * @param {Function} f - a unary function
+   * @param {Function} g - an N-ary function
+   * @return {Function} (f . g) - the N-ary function composition of f and g
    */
-  function compose (functions) {
-    return functions.reduceRight(function (f1, f2) {
-      return function () {
-        return f2(f1.apply(null, arguments))
-      }
-    })
+  function compose (f, g) {
+    isFunction.assert(f)
+    isFunction.assert(g)
+
+    return function () {
+      return f(g.apply(null, arguments))
+    }
   }
 })()
 
