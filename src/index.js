@@ -25,9 +25,25 @@
     isFunction.assert(f)
     isFunction.assert(g)
 
-    return function () {
+    return setProp('name', dot(f, g), function () {
       return f(g.apply(null, arguments))
-    }
+    })
+  }
+
+  function dot (a, b) {
+    return a.name + '.' + b.name
+  }
+
+  function setProp (prop, value, target) {
+    return Object.defineProperty(
+      target,
+      prop,
+      Object.defineProperty(
+        Object.getOwnPropertyDescriptor(target, prop),
+        'value',
+        { value: value }
+      )
+    )
   }
 })()
 
