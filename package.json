@@ -1,6 +1,6 @@
 {
   "name": "fun-compose",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "compose([h, g, f])(x) -> (h o g o f)(x)",
   "main": "src/index.js",
   "scripts": {
