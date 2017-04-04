@@ -5,11 +5,6 @@
 ;(function () {
   'use strict'
 
-  /* imports */
-  var funPredicate = require('fun-predicate')
-
-  var isFunction = funPredicate.type('Function')
-
   /* exports */
   module.exports = compose
 
@@ -22,8 +17,9 @@
    * @return {Function} (f . g) - the N-ary function composition of f and g
    */
   function compose (f, g) {
-    isFunction.assert(f)
-    isFunction.assert(g)
+    if (typeof f !== 'function' || typeof g !== 'function') {
+      throw Error('f and g must be functions. f:' + f + ' g:' + g)
+    }
 
     return setProp('name', dot(f, g), function () {
       return f(g.apply(null, arguments))

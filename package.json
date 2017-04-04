@@ -29,16 +29,9 @@
   "homepage": "https://gitlab.com/bagrounds/fun-compose#README",
   "devDependencies": {
     "eslint": "^3.12.2",
-    "fun-assert": "latest",
-    "fun-test": "latest",
-    "fun-test-runner": "latest",
-    "fun-transform": "latest",
     "jsdoc": "^3.4.3",
     "madge": "^1.4.3",
     "showdown": "^1.5.4",
     "tap": "^9.0.3"
-  },
-  "dependencies": {
-    "fun-predicate": "^0.11.1"
   }
 }
