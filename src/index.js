@@ -21,9 +21,9 @@
       throw Error('f and g must be functions. f:' + f + ' g:' + g)
     }
 
-    return setProp('name', dot(f, g), function () {
+    return setProp('length', g.length, setProp('name', dot(f, g), function () {
       return f(g.apply(null, arguments))
-    })
+    }))
   }
 
   function dot (a, b) {
